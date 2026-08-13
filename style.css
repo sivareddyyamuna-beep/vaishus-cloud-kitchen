@@ -2403,3 +2403,58 @@ border-color: #d35400;
         padding: 15px;
     }
 }
+/* =====================================================
+   FINAL CART MOBILE LAYOUT FIX
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .cart-panel {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .cart-header {
+        flex-shrink: 0 !important;
+    }
+
+    /* Make the cart-items area smaller */
+    .cart-items {
+        flex: 0 0 auto !important;
+        height: 70px !important;
+        max-height: 70px !important;
+        min-height: 70px !important;
+        overflow-y: auto !important;
+        padding: 8px 15px !important;
+    }
+
+    /* Delivery details + totals can scroll */
+    .cart-footer {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+        padding: 15px !important;
+    }
+
+    .customer-details {
+        margin: 5px 0 15px !important;
+        padding: 15px !important;
+    }
+
+    .customer-field {
+        margin-bottom: 10px !important;
+    }
+
+    .customer-field input,
+    .customer-field textarea {
+        padding: 10px 12px !important;
+    }
+
+    .customer-field textarea {
+        min-height: 65px !important;
+    }
+
+}
