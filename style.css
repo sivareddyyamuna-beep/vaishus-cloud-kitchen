@@ -2480,3 +2480,53 @@ body::after {
         transform: scale(1);
     }
 }
+/* =========================================
+   PREMIUM BUTTON SHINE
+========================================= */
+
+button,
+.btn,
+.add-menu-cart {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Moving shine */
+button::after,
+.btn::after,
+.add-menu-cart::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 60%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+}
+
+/* Shine appears on hover */
+button:hover::after,
+.btn:hover::after,
+.add-menu-cart:hover::after {
+    animation: buttonShine 0.7s ease;
+}
+
+@keyframes buttonShine {
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 140%;
+    }
+}
