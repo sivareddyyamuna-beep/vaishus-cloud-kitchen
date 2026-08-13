@@ -868,99 +868,242 @@ document.addEventListener("DOMContentLoaded", function () {
        WHATSAPP
     ===================================================== */
 
-    if (whatsappOrder) {
+    /* =====================================================
+   WHATSAPP ORDER
+===================================================== */
 
-        whatsappOrder.addEventListener(
-            "click",
-            function () {
+if (whatsappOrder) {
 
-                if (cart.length === 0) {
+    whatsappOrder.addEventListener(
+        "click",
+        function () {
 
-                    alert(
-                        "Please add at least one item to your cart."
-                    );
+            /* -----------------------------------------
+               CHECK CART
+            ----------------------------------------- */
 
-                    return;
+            if (cart.length === 0) {
+
+                alert(
+                    "Please add at least one item to your cart."
+                );
+
+                return;
+            }
+
+
+            /* -----------------------------------------
+               GET CUSTOMER DETAILS
+            ----------------------------------------- */
+
+            const customerName =
+                document.getElementById("customerName");
+
+            const customerPhone =
+                document.getElementById("customerPhone");
+
+            const customerEmail =
+                document.getElementById("customerEmail");
+
+            const customerLocation =
+                document.getElementById("customerLocation");
+
+
+            /* -----------------------------------------
+               CHECK CUSTOMER DETAILS
+            ----------------------------------------- */
+
+            if (!customerName || !customerPhone ||
+                !customerEmail || !customerLocation) {
+
+                alert(
+                    "Customer details fields are missing. Please check the HTML."
+                );
+
+                return;
+            }
+
+
+            const name =
+                customerName.value.trim();
+
+            const phone =
+                customerPhone.value.trim();
+
+            const email =
+                customerEmail.value.trim();
+
+            const location =
+                customerLocation.value.trim();
+
+
+            /* -----------------------------------------
+               REQUIRED FIELD VALIDATION
+            ----------------------------------------- */
+
+            if (!name) {
+
+                alert("Please enter your full name.");
+
+                customerName.focus();
+
+                return;
+            }
+
+
+            if (!phone) {
+
+                alert("Please enter your phone number.");
+
+                customerPhone.focus();
+
+                return;
+            }
+
+
+            if (!email) {
+
+                alert("Please enter your email address.");
+
+                customerEmail.focus();
+
+                return;
+            }
+
+
+            if (!location) {
+
+                alert("Please enter your delivery location.");
+
+                customerLocation.focus();
+
+                return;
+            }
+
+
+            /* -----------------------------------------
+               CREATE WHATSAPP MESSAGE
+            ----------------------------------------- */
+
+            let message =
+                "Hello Vaishu's Cloud Kitchen! 👋\n\n";
+
+
+            message +=
+                "🍽️ *NEW ORDER*\n\n";
+
+
+            /* -----------------------------------------
+               CUSTOMER DETAILS
+            ----------------------------------------- */
+
+            message +=
+                "👤 *Customer Details*\n";
+
+            message +=
+                "Name: " +
+                name +
+                "\n";
+
+            message +=
+                "Phone: " +
+                phone +
+                "\n";
+
+            message +=
+                "Email: " +
+                email +
+                "\n";
+
+            message +=
+                "Delivery Location: " +
+                location +
+                "\n\n";
+
+
+            /* -----------------------------------------
+               ORDER DETAILS
+            ----------------------------------------- */
+
+            message +=
+                "🛒 *Order Details*\n\n";
+
+
+            cart.forEach(
+                function (item) {
+
+                    const itemTotal =
+                        item.price *
+                        item.quantity;
+
+
+                    message +=
+                        "🍽️ " +
+                        item.name +
+                        " × " +
+                        item.quantity +
+                        " — " +
+                        money(itemTotal) +
+                        "\n";
 
                 }
+            );
 
 
-                let message =
-                    "Hello Vaishu's Cloud Kitchen! 👋\n\n";
+            /* -----------------------------------------
+               TOTALS
+            ----------------------------------------- */
+
+            message +=
+                "\n--------------------\n";
 
 
-                message +=
-                    "I would like to place an order:\n\n";
+            message +=
+                "Subtotal: " +
+                money(getSubtotal()) +
+                "\n";
 
 
-                cart.forEach(
-                    function (item) {
-
-                        const itemTotal =
-                            item.price *
-                            item.quantity;
+            message +=
+                "Delivery: " +
+                money(getDelivery()) +
+                "\n";
 
 
-                        message +=
-                            "🍽️ " +
-                            item.name +
-                            " × " +
-                            item.quantity +
-                            " — " +
-                            money(itemTotal) +
-                            "\n";
-
-                    }
-                );
+            message +=
+                "TOTAL: " +
+                money(getTotal()) +
+                "\n";
 
 
-                message +=
-                    "\n--------------------\n";
+            message +=
+                "--------------------\n\n";
 
 
-                message +=
-                    "Subtotal: " +
-                    money(getSubtotal()) +
-                    "\n";
+            message +=
+                "Please confirm my order. Thank you! ❤️";
 
 
-                message +=
-                    "Delivery: " +
-                    money(getDelivery()) +
-                    "\n";
+            /* -----------------------------------------
+               OPEN WHATSAPP
+            ----------------------------------------- */
+
+            const url =
+                "https://wa.me/" +
+                WHATSAPP_NUMBER +
+                "?text=" +
+                encodeURIComponent(message);
 
 
-                message +=
-                    "TOTAL: " +
-                    money(getTotal()) +
-                    "\n";
+            window.open(
+                url,
+                "_blank"
+            );
 
+        }
+    );
 
-                message +=
-                    "--------------------\n\n";
-
-
-                message +=
-                    "Please confirm my order. Thank you! ❤️";
-
-
-                const url =
-                    "https://wa.me/" +
-                    WHATSAPP_NUMBER +
-                    "?text=" +
-                    encodeURIComponent(message);
-
-
-                window.open(
-                    url,
-                    "_blank"
-                );
-
-            }
-        );
-
-    }
-
+}
 
     /* =====================================================
        START
