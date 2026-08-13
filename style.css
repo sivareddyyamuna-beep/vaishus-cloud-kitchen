@@ -2364,3 +2364,34 @@ textarea:focus-visible {
         padding: 5px !important;
     }
 }
+/* =========================================
+   ANIMATED CLOUD KITCHEN BACKGROUND
+========================================= */
+
+body {
+    background: linear-gradient(
+        -45deg,
+        #fff8f0,
+        #fff1e2,
+        #fff9f4,
+        #ffe8d2
+    );
+
+    background-size: 400% 400%;
+
+    animation: kitchenBackground 15s ease infinite;
+}
+
+@keyframes kitchenBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
