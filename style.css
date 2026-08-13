@@ -2455,3 +2455,28 @@ body::after {
         transform: translate(-20px, 40px) scale(0.95);
     }
 }
+/* =========================================
+   CART BADGE POP ANIMATION
+========================================= */
+
+.cart-count.cart-pop {
+    animation: cartBadgePop 0.45s ease;
+}
+
+@keyframes cartBadgePop {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.35);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
