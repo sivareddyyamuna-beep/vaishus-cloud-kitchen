@@ -278,26 +278,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateCartCount() {
 
-        const count =
-            cart.reduce(
-                function (total, item) {
+    const count =
+        cart.reduce(
+            function (total, item) {
+                return total +
+                    item.quantity;
+            },
+            0
+        );
 
-                    return total +
-                        item.quantity;
+    if (cartCount) {
+        cartCount.textContent = count;
 
-                },
-                0
-            );
+        cartCount.classList.remove("cart-pop");
 
+        void cartCount.offsetWidth;
 
-        if (cartCount) {
-
-            cartCount.textContent =
-                count;
-
-        }
-
+        cartCount.classList.add("cart-pop");
     }
+}
 
 
     /* =====================================================
