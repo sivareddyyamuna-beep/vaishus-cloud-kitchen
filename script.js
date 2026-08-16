@@ -265,11 +265,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function getTotal() {
-
-        return getSubtotal() +
-            getDelivery();
-
-    }
+    return getSubtotal();
+}
 
 
     /* =====================================================
