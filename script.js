@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     const WHATSAPP_NUMBER = "916305253275";
-    const DELIVERY_CHARGE = 50;
+    const DELIVERY_CHARGE = 0;
 
 
     /* =====================================================
@@ -449,22 +449,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        if (cartDelivery) {
 
-            cartDelivery.textContent =
-                money(delivery);
-
-        }
-
-
-        if (cartTotal) {
-
-            cartTotal.textContent =
-                money(total);
-
-        }
-
-    }
+       if (cartDelivery) {
+    cartDelivery.textContent =
+        "To be confirmed";
+}
 
 
     /* =====================================================
@@ -1063,10 +1052,8 @@ if (whatsappOrder) {
                 "\n";
 
 
-            message +=
-                "Delivery: " +
-                money(getDelivery()) +
-                "\n";
+           message +=
+    "Delivery Charges: To be confirmed\n";
 
 
             message +=
